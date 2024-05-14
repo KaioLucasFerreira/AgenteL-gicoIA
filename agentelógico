@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Pense em um número entre 1 e 100 e eu vou tentar adivinhar.");
+
+        int min = 1;
+        int max = 100;
+        boolean encontrado = false;
+
+        while (!encontrado) {
+            int chute = (min + max) / 2;
+            System.out.println("Eu acho que o número é " + chute);
+            System.out.println("Estou certo? (Digite 's' para sim ou 'maior'/'menor' para indicar)");
+            String resposta = scanner.nextLine().toLowerCase();
+
+            if (resposta.equals("s")) {
+                encontrado = true;
+                System.out.println("Eu sabia!");
+            } else if (resposta.equals("maior")) {
+                min = chute + 1;
+            } else if (resposta.equals("menor")) {
+                max = chute - 1;
+            } else {
+                System.out.println("Desculpe, não entendi a resposta.");
+            }
+        }
+
+        scanner.close();
+    }
+}
